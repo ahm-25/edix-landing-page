@@ -23,6 +23,13 @@
   }
 }
 
+/* Hide intro elements until GSAP animates them in (only when JS runs and motion is allowed) */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .hero-reveal {
+    visibility: hidden;
+  }
+}
+
 @layer utilities {
   .glass-panel {
     @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-glass;

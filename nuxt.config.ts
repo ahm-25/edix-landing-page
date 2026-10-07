@@ -22,6 +22,9 @@ export default defineNuxtConfig({
         lang: 'ar'
       },
       title: 'EDIX — نبني البرمجيات التي تدفع أعمالك إلى الأمام',
+      script: [
+        { innerHTML: "document.documentElement.classList.add('js')", tagPosition: 'head' }
+      ],
       meta: [
         { name: 'description', content: 'EDIX شركة تقنية متخصصة في تطوير منصات الويب والتجارة الإلكترونية ومنتجات SaaS والبرمجيات المخصصة.' }
       ]

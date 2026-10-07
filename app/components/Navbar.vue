@@ -3,7 +3,15 @@ import { ref, onMounted, onUnmounted } from 'vue'
 import { siteConfig } from '~/data/config'
 import { Globe, Menu, X } from '@lucide/vue'
 
+const header = ref<HTMLElement | null>(null)
 const isScrolled = ref(false)
+
+useGsap(header, () => {
+  const q = gsap.utils.selector(header.value)
+  gsap.timeline({ defaults: { ease: 'power3.out' } })
+    .fromTo(q('.nav-inner'), { autoAlpha: 0, y: -30 }, { autoAlpha: 1, y: 0, duration: 0.9 })
+    .from(q('.nav-link'), { autoAlpha: 0, y: -12, duration: 0.6, stagger: 0.06 }, 0.3)
+})
 const isMobileMenuOpen = ref(false)
 
 const handleScroll = () => {
@@ -21,12 +29,13 @@ onUnmounted(() => {
 
 <template>
   <header 
+    ref="header"
     :class="[
       'fixed top-0 left-0 right-0 z-50 transition-all duration-500 border-b',
       isScrolled ? 'bg-white/70 backdrop-blur-xl shadow-glass border-white/50 py-3' : 'bg-transparent border-transparent py-6'
     ]"
   >
-    <div class="container mx-auto px-4 md:px-8 flex items-center justify-between">
+    <div class="nav-inner hero-reveal container mx-auto px-4 md:px-8 flex items-center justify-between">
       
       <!-- Right Side (RTL) - Logo -->
       <NuxtLink to="/" class="flex items-center gap-2 relative z-50">
@@ -40,7 +49,7 @@ onUnmounted(() => {
           v-for="item in siteConfig.navigation" 
           :key="item.name" 
           :to="item.href"
-          class="text-sm font-semibold text-gray-700 hover:text-primary-blue transition-colors"
+          class="nav-link text-sm font-semibold text-gray-700 hover:text-primary-blue transition-colors"
         >
           {{ item.name }}
         </NuxtLink>

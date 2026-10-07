@@ -1,5 +1,6 @@
 <template>
   <div class="min-h-screen flex flex-col font-sans">
+    <ScrollProgress />
     <Navbar />
     
     <main class="flex-grow pt-24">
