@@ -19,11 +19,12 @@ const projects = siteConfig.projects
           :key="project.id"
           :to="project.link || '#'"
           :target="project.link ? '_blank' : undefined"
-          class="bg-white rounded-2xl p-6 md:p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group flex flex-col h-full"
+          class="bg-white rounded-[2rem] p-6 md:p-8 border border-gray-100/80 shadow-[0_4px_20px_rgba(0,0,0,0.02)] hover:shadow-[0_20px_40px_rgba(23,105,255,0.08)] transition-all duration-500 hover:-translate-y-2 group flex flex-col h-full relative z-10 overflow-hidden"
         >
+          <div class="absolute inset-0 bg-gradient-to-br from-primary-light/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
           <!-- Project Image -->
-          <div class="w-full h-64 rounded-xl mb-8 overflow-hidden border border-gray-100 relative group-hover:border-primary-blue/30 transition-all shadow-sm group-hover:shadow-md bg-gray-50">
-            <div class="absolute inset-0 bg-primary-blue/5 opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+          <div class="w-full h-72 rounded-2xl mb-8 overflow-hidden border border-gray-100/50 relative group-hover:border-primary-blue/30 transition-all duration-500 shadow-sm group-hover:shadow-glow bg-gray-50/50">
+            <div class="absolute inset-0 bg-gradient-to-t from-primary-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 mix-blend-multiply"></div>
             <img 
                v-if="project.image" 
                :src="project.image" 
@@ -38,21 +39,23 @@ const projects = siteConfig.projects
           </div>
           
           <div class="mt-auto flex-1 flex flex-col">
-            <div class="inline-flex items-center self-start px-2.5 py-1 rounded-md bg-primary-light text-primary-blue text-xs font-semibold mb-4">
+            <div class="inline-flex items-center self-start px-3 py-1.5 rounded-lg bg-primary-light/60 text-primary-blue text-xs font-bold mb-5 tracking-wide group-hover:bg-primary-blue group-hover:text-white transition-colors duration-300 shadow-sm">
               {{ project.category }}
             </div>
-            <h4 class="text-2xl font-bold text-primary-navy mb-3 group-hover:text-primary-blue transition-colors flex items-center justify-between">
+            <h4 class="text-2xl font-black text-primary-navy mb-3 group-hover:text-primary-blue transition-colors duration-300 flex items-center justify-between">
               {{ project.name }}
-              <ExternalLink class="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity text-primary-blue" />
+              <div class="w-8 h-8 rounded-full bg-primary-light flex items-center justify-center opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                <ExternalLink class="w-4 h-4 text-primary-blue" />
+              </div>
             </h4>
-            <p class="text-gray-500 text-base leading-relaxed mb-6 flex-1">{{ project.description }}</p>
+            <p class="text-gray-500 text-base font-medium leading-relaxed mb-8 flex-1">{{ project.description }}</p>
             
             <div class="flex flex-wrap gap-2 mt-auto">
               <template v-if="project.technologies">
                 <span 
                   v-for="tech in project.technologies" 
                   :key="tech"
-                  class="text-xs text-gray-500 bg-gray-50 px-2.5 py-1 rounded-md border border-gray-100"
+                  class="text-[11px] font-bold text-gray-500 bg-white px-3 py-1.5 rounded-md border border-gray-100 shadow-[0_2px_10px_rgba(0,0,0,0.02)] group-hover:border-primary-blue/20 group-hover:text-primary-blue transition-colors duration-300"
                 >
                   {{ tech }}
                 </span>

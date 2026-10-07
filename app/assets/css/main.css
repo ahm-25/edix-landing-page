@@ -8,6 +8,31 @@
   }
   
   body {
-    @apply font-sans bg-background text-primary-navy antialiased selection:bg-primary-blue selection:text-white;
+    @apply font-sans bg-background text-primary-navy antialiased selection:bg-primary-blue/30 selection:text-primary-navy;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-50;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-primary-blue transition-colors;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-glass;
+  }
+  
+  .glass-panel-dark {
+    @apply bg-[#0B1626]/80 backdrop-blur-xl border border-gray-800 shadow-glass;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-navy via-primary-blue to-primary-navy bg-[length:200%_auto] animate-[pulse-slow_4s_ease-in-out_infinite];
   }
 }
