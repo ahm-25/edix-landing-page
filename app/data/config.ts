@@ -124,7 +124,7 @@ export const siteConfig = {
   ],
   contact: {
     email: 'hello@edix.com',
-    phone: '+20 100 123 4567',
-    whatsapp: '+201001234567'
+    phone: '+20 101 836 4890',
+    whatsapp: '+201018364890'
   }
 }

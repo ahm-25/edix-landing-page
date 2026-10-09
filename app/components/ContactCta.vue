@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { siteConfig } from '~/data/config'
 
 const root = ref<HTMLElement | null>(null)
 
@@ -41,7 +42,7 @@ useGsap(root, () => {
             <AppButton to="mailto:hello@edix.com" variant="primary" size="lg" class="w-full sm:w-auto min-w-[200px]">
               ابدأ مشروعك
             </AppButton>
-            <AppButton to="tel:+201001234567" variant="secondary" size="lg" class="w-full sm:w-auto min-w-[200px]">
+            <AppButton :to="`https://wa.me/${siteConfig.contact.whatsapp}`" variant="secondary" size="lg" class="w-full sm:w-auto min-w-[200px]">
               تواصل معنا
             </AppButton>
           </div>
